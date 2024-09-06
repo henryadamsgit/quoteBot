@@ -1,7 +1,7 @@
 // Import necessary modules
 const express = require("express");
 const cors = require("cors");
-const quotesRouter = require("./quotesAPI");
+const quotesRouter = require("./quotesAPI.js");
 
 // Create an Express app
 const app = express();

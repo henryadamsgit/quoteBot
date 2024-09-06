@@ -7,7 +7,7 @@ const Quotes = () => {
   useEffect(() => {
     const fetchQuotes = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/quotes`, {
+        const response = await fetch(`http://localhost:5000/api/quotes`, {
           method: "GET",
           headers: {
             Accept: "application/json",
