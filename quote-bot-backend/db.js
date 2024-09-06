@@ -10,7 +10,6 @@ const client = new MongoClient(uri, {
 const connectDB = async () => {
   try {
     await client.connect();
-    console.log("Connected to MongoDB!");
     return client.db("quoteBotDB");
   } catch (err) {
     console.error("Error connecting to MongoDB:", err);
