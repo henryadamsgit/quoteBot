@@ -6,6 +6,17 @@ const Quotes = () => {
   const [quotes, setQuotes] = useState([]);
   const [selectedQuote, setSelectedQuote] = useState(null);
 
+  const selectRandomQuote = (data) => {
+    if (data && data.length > 0) {
+      const randomIndex = Math.floor(Math.random() * data.length);
+      setSelectedQuote(data[randomIndex]);
+    }
+  };
+
+  const handleClick = () => {
+    selectRandomQuote(quotes);
+  };
+
   useEffect(() => {
     const fetchQuotes = async () => {
       try {
@@ -20,10 +31,7 @@ const Quotes = () => {
         if (response.ok) {
           const data = await response.json();
           setQuotes(data);
-
-          const randomIndex = Math.floor(Math.random() * data.length);
-          setSelectedQuote(data[randomIndex]);
-
+          selectRandomQuote(data);
         } else {
           throw new Error("Unable to fetch quotes");
         }
@@ -35,24 +43,17 @@ const Quotes = () => {
     fetchQuotes();
   }, []);
 
-  // I WANT TO:
-  // 1. Only show one quote in the box. Add selected quote state. Add conditional
-  // 2. Have a new quote be generated onClick()
-  // 3. Have a new quote appear at the start of each day
-
-
   return (
     <div className="quoteContainer">
-      <ul>
-          {selectedQuote ? (
-          <div className="quoteContainerBox">
-            <p className="quoteText">{selectedQuote.quote}</p>
-            <p className="quoteAuthor">-{selectedQuote.author}</p>
-          </div>
-        ) : 
-        <p>Loading...</p>}
-      </ul>
-      {/* <Button onClick={}></Button> */}
+      {selectedQuote ? (
+        <div className="quoteContainerBox">
+          <p className="quoteText">{selectedQuote.quote}</p>
+          <p className="quoteAuthor">- {selectedQuote.author}</p>
+        </div>
+      ) : (
+        <p>Loading...</p>
+      )}
+      <Button onClick={handleClick}></Button>
     </div>
   );
 };
