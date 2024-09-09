@@ -4,7 +4,7 @@ import "./Button.scss";
 const Button = ({ onClick }) => {
   return (
     <button className="button" onClick={onClick}>
-      press
+      new quote
     </button>
   );
 };

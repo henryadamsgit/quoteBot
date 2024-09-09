@@ -45,10 +45,10 @@ const Quotes = () => {
     <div className="quoteContainer">
       <ul>
           {selectedQuote ? (
-          <li>
-            <p>{selectedQuote.quote}</p>
-            <p>- {selectedQuote.author}</p>
-          </li>
+          <div className="quoteContainerBox">
+            <p className="quoteText">{selectedQuote.quote}</p>
+            <p className="quoteAuthor">-{selectedQuote.author}</p>
+          </div>
         ) : 
         <p>Loading...</p>}
       </ul>

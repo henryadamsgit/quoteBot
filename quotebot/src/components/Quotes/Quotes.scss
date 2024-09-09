@@ -1,14 +1,28 @@
-.quoteContainer {
-  border: solid black 5px;
-  border-radius: 50px;
-  height: 300px;
-  position: relative;
-  margin: 150px;
-}
+// .quoteContainer {
+//   border: solid black 5px;
+//   border-radius: 50px;
+//   height: 300px;
+//   position: relative;
+// }
 
-.quoteContainerQuote {
+.quoteContainerBox {
   border: solid black 5px;
   border-radius: 10px;
-  height: 100px;
-  padding: 10px;
+  height: 300px;
+  width: 60%;
+  margin-left: 360px;
+
+}
+
+.quoteText {
+  font-size: 54px;
+  font-weight: bold;
+  padding: 0px;
+  margin-left: 180px;
+}
+
+.quoteAuthor {
+  font-size: 38px;
+  font-weight: lighter;
+  margin-left: 450px;
 }
