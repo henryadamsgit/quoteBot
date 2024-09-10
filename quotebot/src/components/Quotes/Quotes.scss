@@ -3,30 +3,30 @@
   border-radius: 10px;
   height: 300px;
   width: 60%;
-  margin: 0 auto; /* Center the box horizontally */
-  padding: 20px; /* Add padding for some spacing */
+  margin: 0 auto; 
+  padding: 20px; 
   display: flex;
-  flex-direction: column; /* Stack items vertically */
-  justify-content: center; /* Center the content vertically */
-  align-items: center; /* Center the content horizontally */
-  overflow: hidden; /* Prevent content from overflowing */
-  text-align: center; /* Center the text */
-  box-sizing: border-box; /* Include padding and border in the width/height */
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center; 
+  overflow: hidden;
+  text-align: center; 
+  box-sizing: border-box; 
 }
 
 .quoteText {
-  font-size: 24px; /* Adjust font size for better readability */
+  font-size: 24px; 
   font-weight: bold;
-  margin: 0; /* Remove the hardcoded margin */
-  padding: 10px 0; /* Add padding to give space between text and border */
-  word-wrap: break-word; /* Ensure words break correctly */
-  max-width: 100%; /* Ensure text stays within the container */
+  margin: 0;
+  padding: 10px 0; 
+  word-wrap: break-word; 
+  max-width: 100%; 
 }
 
 .quoteAuthor {
-  font-size: 20px; /* Adjust font size for better readability */
+  font-size: 20px; 
   font-weight: lighter;
-  margin: 0; /* Remove the hardcoded margin */
-  padding: 10px 0; /* Add padding to give space between text and border */
-  max-width: 100%; /* Ensure text stays within the container */
+  margin: 0; 
+  padding: 10px 0; 
+  max-width: 100%; 
 }

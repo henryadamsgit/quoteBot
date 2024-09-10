@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./Quotes.scss";
 import Button from "../Button/Button";
 
+
+// I WANT TO:
+// 1. SEND MYSELF AN EMAIL AT 6AM EVERY DAY OF ONE OF THE QUOTES
+
 const Quotes = () => {
   const [quotes, setQuotes] = useState([]);
   const [selectedQuote, setSelectedQuote] = useState(null);
