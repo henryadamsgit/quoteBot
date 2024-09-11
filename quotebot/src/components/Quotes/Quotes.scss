@@ -1,5 +1,6 @@
 .quoteContainerBox {
-  border: solid black 5px;
+  border: solid #3498db 5px;
+  color: white;
   border-radius: 10px;
   height: 300px;
   width: 60%;
@@ -21,6 +22,7 @@
   padding: 10px 0; 
   word-wrap: break-word; 
   max-width: 100%; 
+  color: white;
 }
 
 .quoteAuthor {
