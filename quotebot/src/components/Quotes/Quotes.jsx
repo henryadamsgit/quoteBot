@@ -1,14 +1,27 @@
 import React, { useEffect, useState } from "react";
 import "./Quotes.scss";
 import Button from "../Button/Button";
+import data from '../../assets/data/email/emails.json';
+
+
 
 
 // I WANT TO:
 // 1. SEND MYSELF AN EMAIL AT 6AM EVERY DAY OF ONE OF THE QUOTES
+// Import Date / Time
+// Email address json
+// while time != 6am, wait
+// else call selectRandomQuote()
 
 const Quotes = () => {
   const [quotes, setQuotes] = useState([]);
   const [selectedQuote, setSelectedQuote] = useState(null);
+
+  // **
+  //
+  //  Quote Handling
+  //
+  // **
 
   const selectRandomQuote = (data) => {
     if (data && data.length > 0) {
@@ -20,6 +33,29 @@ const Quotes = () => {
   const handleClick = () => {
     selectRandomQuote(quotes);
   };
+
+  // **
+  // 
+  // Date Time Handling
+  // 
+  // **
+
+  const moment = require('moment');
+  const currentTime = showTime;
+
+  const showCurrentTime = () => {
+    const showTime = moment().format('MMMM Do YYYY, h:mm:ss a');
+    console.log(showTime);
+  }
+
+
+  const handleEmail = () => {
+    const email = data.emails[0].emailAddress;
+
+    if (currentTime != '6am') {
+      
+    }
+  }
 
   useEffect(() => {
     const fetchQuotes = async () => {
@@ -36,6 +72,7 @@ const Quotes = () => {
           const data = await response.json();
           setQuotes(data);
           selectRandomQuote(data);
+          showCurrentTime();
         } else {
           throw new Error("Unable to fetch quotes");
         }

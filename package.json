@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "nodemailer": "^6.9.15",
     "sass": "^1.69.5"
   }
 }
