@@ -41,7 +41,6 @@ const Quotes = () => {
   // **
 
   const moment = require('moment');
-  const currentTime = showTime;
 
   const showCurrentTime = () => {
     const showTime = moment().format('MMMM Do YYYY, h:mm:ss a');
@@ -51,9 +50,10 @@ const Quotes = () => {
 
   const handleEmail = () => {
     const email = data.emails[0].emailAddress;
-
+    showTime = currentTime;
+    
     if (currentTime != '6am') {
-      
+
     }
   }
 
