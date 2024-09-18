@@ -3,16 +3,6 @@ import "./Quotes.scss";
 import Button from "../Button/Button";
 import data from '../../assets/data/email/emails.json';
 
-
-
-
-// I WANT TO:
-// 1. SEND MYSELF AN EMAIL AT 6AM EVERY DAY OF ONE OF THE QUOTES
-// Import Date / Time
-// Email address json
-// while time != 6am, wait
-// else call selectRandomQuote()
-
 const Quotes = () => {
   const [quotes, setQuotes] = useState([]);
   const [selectedQuote, setSelectedQuote] = useState(null);
@@ -56,6 +46,9 @@ const Quotes = () => {
 
     }
   }
+
+
+
 
   useEffect(() => {
     const fetchQuotes = async () => {
