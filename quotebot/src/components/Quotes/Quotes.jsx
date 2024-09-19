@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Quotes.scss";
 import Button from "../Button/Button";
-import data from '../../assets/data/email/emails.json';
 
 const Quotes = () => {
   const [quotes, setQuotes] = useState([]);
@@ -24,29 +23,6 @@ const Quotes = () => {
     selectRandomQuote(quotes);
   };
 
-  // **
-  // 
-  // Date Time Handling
-  // 
-  // **
-
-  const moment = require('moment');
-
-  const showCurrentTime = () => {
-    const showTime = moment().format('MMMM Do YYYY, h:mm:ss a');
-    console.log(showTime);
-  }
-
-
-  const handleEmail = () => {
-    const email = data.emails[0].emailAddress;
-    showTime = currentTime;
-    
-    if (currentTime != '6am') {
-
-    }
-  }
-
 
 
 
@@ -65,7 +41,6 @@ const Quotes = () => {
           const data = await response.json();
           setQuotes(data);
           selectRandomQuote(data);
-          showCurrentTime();
         } else {
           throw new Error("Unable to fetch quotes");
         }
@@ -89,7 +64,6 @@ const Quotes = () => {
       )}
       <Button onClick={handleClick}></Button>
     </div>
-  );
-};
+  )};
 
 export default Quotes;
