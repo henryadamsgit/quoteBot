@@ -1,4 +1,4 @@
-require('dotenv').config();
+require("dotenv").config(); // Import the 'dotenv' library and load environment variables from .env
 const express = require("express");
 const cors = require("cors");
 const nodemailer = require("nodemailer");
@@ -16,17 +16,17 @@ app.use(cors());
 // Mount the quotesRouter at the /api endpoint
 app.use("/api", quotesRouter);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
 // Configure Nodemailer with environment variables
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  service: "gmail",
   auth: {
-    user: process.env.email, // Use the email from .env
-    pass: process.env.password, // Use the password from .env
+    user: process.env.EMAIL, // Use the email from .env
+    pass: process.env.PASSWORD, // Use the password from .env
   },
 });
 
@@ -62,9 +62,9 @@ const selectRandomQuote = (quotes) => {
 const sendEmail = async (quote, author, emailList) => {
   emailList.forEach((recipient) => {
     const mailOptions = {
-      from: `"QuoteBot" <${process.env.email}>`, // Send from your QuoteBot email
+      from: `"QuoteBot" <${process.env.EMAIL}>`, // Send from your QuoteBot email
       to: recipient,
-      subject: 'GM, Your Daily Quote Is Here...',
+      subject: "GM, Your Daily Quote Is Here...",
       text: `"${quote}" - ${author}`,
     };
 
@@ -72,7 +72,9 @@ const sendEmail = async (quote, author, emailList) => {
       if (error) {
         console.error(`Error sending email to ${recipient}:`, error);
       } else {
-        console.log(`Email sent successfully to ${recipient}: ${info.response}`);
+        console.log(
+          `Email sent successfully to ${recipient}: ${info.response}`
+        );
       }
     });
   });
@@ -80,28 +82,31 @@ const sendEmail = async (quote, author, emailList) => {
 
 // Scheduling Logic
 const handleTime = async () => {
+  console.log("handleTime called");
+
   const checkTime = async () => {
-    const currentTime = moment().format('HH:mm');
-    const targetTime = '06:00'; // Change this to 06:00 for 6 AM
+    const currentTime = moment().format("HH:mm");
+    console.log(`Checking time: ${currentTime}`);
+    const targetTime = "21:13"; // Set this to the time you want, e.g. 06:00 for 6 AM
 
     if (currentTime === targetTime) {
       console.log("It's 6 AM! Time to send the daily quote.");
-      
+
       const quotes = await fetchQuotes();
-      
+
       if (quotes.length > 0) {
         const { quote, author } = selectRandomQuote(quotes);
 
-        const emailList = data.emails.map(email => email.emailAddress);
+        const emailList = data.emails.map((email) => email.emailAddress);
 
         await sendEmail(quote, author, emailList);
       } else {
-        console.log("No quotes available.");
+        console.log("No quotes available, no email sent");
       }
     }
   };
 
-  const intervalId = setInterval(checkTime, 60000); // Check every minute
+  const intervalId = setInterval(checkTime, 6000); // Check every minute
 };
 
 handleTime();
