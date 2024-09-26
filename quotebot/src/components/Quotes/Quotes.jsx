@@ -2,6 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./Quotes.scss";
 import Button from "../Button/Button";
 
+        // {
+        //     "name": "Will Armstrong",
+        //     "emailAddress": "willarmstrong40@gmail.com"
+        // }
+
 const Quotes = () => {
   const [quotes, setQuotes] = useState([]);
   const [selectedQuote, setSelectedQuote] = useState(null);
