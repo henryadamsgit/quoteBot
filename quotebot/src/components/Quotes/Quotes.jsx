@@ -12,9 +12,7 @@ const Quotes = () => {
   const [selectedQuote, setSelectedQuote] = useState(null);
 
   // **
-  //
   //  Quote Handling
-  //
   // **
 
   const selectRandomQuote = (data) => {
