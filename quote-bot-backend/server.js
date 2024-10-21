@@ -1,4 +1,4 @@
-require("dotenv").config(); // Import the 'dotenv' library and load environment variables from .env
+require("dotenv").config(); 
 const express = require("express");
 const cors = require("cors");
 const nodemailer = require("nodemailer");
@@ -9,11 +9,11 @@ const quotesRouter = require("./quotesAPI.js");
 
 const data = require("../quotebot/src/assets/data/email/emails.json");
 
-// Create an Express app
+
 const app = express();
 app.use(cors());
 
-// Mount the quotesRouter at the /api endpoint
+
 app.use("/api", quotesRouter);
 
 const PORT = 5000;
@@ -63,8 +63,8 @@ const selectRandomQuote = (quotes) => {
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: process.env.email, // Use the email from .env
-    pass: process.env.password, // Use the password from .env
+    user: process.env.email, 
+    pass: process.env.password, 
   },
 });
 
@@ -72,7 +72,7 @@ const transporter = nodemailer.createTransport({
 const sendEmail = async (quote, author, emailList) => {
   emailList.forEach((recipient) => {
     const mailOptions = {
-      from: `"QuoteBot" <${process.env.email}>`, // Send from your QuoteBot email
+      from: `"QuoteBot" <${process.env.email}>`, 
       to: recipient,
       subject: "GM, Your Daily Quote Is Here...",
       text: `"${quote}" - ${author}`,
@@ -93,16 +93,16 @@ const sendEmail = async (quote, author, emailList) => {
 
 
 // **
-// TIME
+// TIME LOGIC
 // **
 
 
-// Scheduling Logic
+
 const handleTime = async () => {
 
   const checkTime = async () => {
     const currentTime = moment().format("HH:mm");
-    const targetTime = "15:48"; // Set this to the time you want, e.g. 06:00 for 6 AM
+    const targetTime = "15:48"; 
 
     if (currentTime === targetTime) {
 
@@ -122,7 +122,7 @@ const handleTime = async () => {
     }
   };
 
-  const intervalId = setInterval(checkTime, 60000); // Check every minute
+  const intervalId = setInterval(checkTime, 60000); // every minute
   console.log(setInterval, "I'm looking...");
   
 };
