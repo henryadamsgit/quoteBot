@@ -102,7 +102,7 @@ const handleTime = async () => {
 
   const checkTime = async () => {
     const currentTime = moment().format("HH:mm");
-    const targetTime = "15:48"; 
+    const targetTime = "13:38"; 
 
     if (currentTime === targetTime) {
 
@@ -122,7 +122,7 @@ const handleTime = async () => {
     }
   };
 
-  const intervalId = setInterval(checkTime, 60000); // every minute
+  const intervalId = setInterval(checkTime, 600000); // every minute
   console.log(setInterval, "I'm looking...");
   
 };
