@@ -1,4 +1,4 @@
-require("dotenv").config(); 
+require('dotenv').config({ path: '../quotebot/env/password.env' });
 const express = require("express");
 const cors = require("cors");
 const nodemailer = require("nodemailer");
@@ -16,7 +16,7 @@ app.use(cors());
 
 app.use("/api", quotesRouter);
 
-const PORT = 5000;
+const PORT = 5001;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
@@ -59,36 +59,56 @@ const selectRandomQuote = (quotes) => {
 // EMAIL
 // **
 
+const sgMail = require('@sendgrid/mail')
+console.log('SendGrid API Key:', process.env.SENDGRID_API_KEY);
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+const msg = {
+  to: 'georgeadams0204@gmail.com', // Change to your recipient
+  from: 'henrybruce.adams@icloud.com', // Change to your verified sender
+  subject: 'Sending with SendGrid is Fun',
+  text: 'and easy to do anywhere, even with Node.js',
+  html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+}
+sgMail
+  .send(msg)
+  .then(() => {
+    console.log('Email sent')
+  })
+  .catch((error) => {
+    console.error(error)
+  })
 
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.email, 
-    pass: process.env.password, 
-  },
-});
 
 
-const sendEmail = async (quote, author, emailList) => {
-  emailList.forEach((recipient) => {
-    const mailOptions = {
-      from: `"QuoteBot" <${process.env.email}>`, 
-      to: recipient,
-      subject: "GM, Your Daily Quote Is Here...",
-      text: `"${quote}" - ${author}`,
-    };
+// const transporter = nodemailer.createTransport({
+//   service: 'gmail',
+//   auth: {
+//     user: process.env.email, 
+//     pass: process.env.password, 
+//   },
+// });
 
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.error(`Error sending email to ${recipient}:`, error);
-      } else {
-        console.log(
-          `Email sent successfully to ${recipient}: ${info.response}`
-        );
-      }
-    });
-  });
-};
+
+// const sendEmail = async (quote, author, emailList) => {
+//   emailList.forEach((recipient) => {
+//     const mailOptions = {
+//       from: `"QuoteBot" <${process.env.email}>`, 
+//       to: recipient,
+//       subject: "GM, Your Daily Quote Is Here...",
+//       text: `"${quote}" - ${author}`,
+//     };
+
+//     transporter.sendMail(mailOptions, (error, info) => {
+//       if (error) {
+//         console.error(`Error sending email to ${recipient}:`, error);
+//       } else {
+//         console.log(
+//           `Email sent successfully to ${recipient}: ${info.response}`
+//         );
+//       }
+//     });
+//   });
+// };
 
 
 
@@ -122,8 +142,8 @@ const handleTime = async () => {
     }
   };
 
-  const intervalId = setInterval(checkTime, 600000); // every minute
-  console.log(setInterval, "I'm looking...");
+  // const intervalId = setInterval(checkTime, 600000); // every minute
+  // console.log(setInterval, "I'm looking...");
   
 };
 
